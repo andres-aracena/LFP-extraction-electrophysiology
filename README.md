@@ -224,11 +224,13 @@ cd GPU_process  # or cd CPU_process
 
 Usage:
 ```bash
-python compare_files.py path/to/raw_data.dat path/to/processed_data.lfp \
-  --num-channels 385 \
-  --num-samples 60000 \ # Number of raw samples to analyze
-  --analysis detailed \ # 'basic', 'detailed', 'frequency', or 'all'
-  --channel 10 \        # Channel index for detailed/frequency analysis
+python compare_files.py `
+    path/to/raw_data.dat `
+    path/to/processed_data.lfp `
+  --num-channels 67 `
+  --num-samples 18015900 ` # Number of raw samples to analyze
+  --analysis detailed ` # 'basic', 'detailed', 'frequency', or 'all'
+  --channel 10 `        # Channel index for detailed/frequency analysis
   --output analysis_report.txt # Optional output file for metrics
 ```
 *(See script arguments using `python compare_files.py -h` for more details)*

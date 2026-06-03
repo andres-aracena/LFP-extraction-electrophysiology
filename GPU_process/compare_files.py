@@ -239,7 +239,7 @@ def compare_signals_detailed(dat_file, lfp_file, num_channels=384, num_samples=N
     freqs_coh, coherence = compute_coherence(downsampled_raw, lfp_signal, lfp_fs)
     
     # Create figure
-    fig = plt.figure(figsize=(14, 12))
+    fig = plt.figure(figsize=(14, 10))
     gs = GridSpec(3, 2, figure=fig)
     
     # Time domain plot
@@ -249,6 +249,7 @@ def compare_signals_detailed(dat_file, lfp_file, num_channels=384, num_samples=N
     ax1.set_title(f'Channel {channel} - Time Domain Comparison', fontsize=14)
     ax1.set_xlabel('Time (s)')
     ax1.set_ylabel('Signal')
+    ax1.set_xlim([0, lfp_time[min_len-1]])
     ax1.legend()
     ax1.grid(True)
     
@@ -259,6 +260,7 @@ def compare_signals_detailed(dat_file, lfp_file, num_channels=384, num_samples=N
     ax2.set_xlabel('Frequency (Hz)')
     ax2.set_ylabel('PSD [V**2/Hz]')
     ax2.set_xlim([0, lfp_fs/2])
+    ax2.set_ylim([1e-3, 1e3])  # Set y-limits for better visualization
     ax2.grid(True)
     
     ax3 = fig.add_subplot(gs[1, 1])
@@ -267,6 +269,7 @@ def compare_signals_detailed(dat_file, lfp_file, num_channels=384, num_samples=N
     ax3.set_xlabel('Frequency (Hz)')
     ax3.set_ylabel('PSD [V**2/Hz]')
     ax3.set_xlim([0, lfp_fs/2])
+    ax3.set_ylim([1e-3, 1e3])  # Set y-limits for better visualization
     ax3.grid(True)
     
     # Coherence plot
