@@ -1,4 +1,5 @@
 from src.extract_lfp import extract_lfp
+from src.config import INPUT_FILE, OUTPUT_FILE, CHUNK_SIZE, N_CHANNELS
 
 
 def main():
