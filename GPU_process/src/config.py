@@ -6,5 +6,5 @@ TARGET_SAMPLING_RATE = 1250      # Target sample rate in Hz
 
 CUTOFF_FREQUENCY = 500   # Cutoff frequency for low-pass filter in Hz
 CHUNK_SIZE = 134000000   # Bytes (~134 MB)
-N_CHANNELS = 32  # Number of channels in the recordings
+N_CHANNELS = 67  # Number of channels in the recordings
 

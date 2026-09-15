@@ -131,7 +131,7 @@ def main():
         from filters import detect_peaks_with_threshold
         peaks = detect_peaks_with_threshold(ripple_envelope, threshold_factor=5.0, min_distance_samples=int(0.020 * FS))
         plot_envelope_and_candidates(ripple_filtered, ripple_envelope, peaks, FS, 
-                             threshold_factor=5.0, time_window=None)
+                             threshold_factor=3.0, time_window=None)
         print('DEBUG: Envelope and peak detection plot shown.')
 
     if '5' in plot_choices:
@@ -153,13 +153,13 @@ def main():
         noise_reference_signal=noise_reference_signal,
     )
     detector.print_summary(events)
-
+    """
     if '6' in plot_choices:
         print('DEBUG: Starting candidate windows plot...')
         plot_candidate_windows(differential_signal, events, FS,
                                title='Candidate ripple windows')
         print('DEBUG: Candidate windows plot shown.')
-
+    """
     valid_events = [e for e in events if e.is_valid]
     if valid_events:
         print("\nFirst valid events:")
@@ -167,6 +167,12 @@ def main():
             duration_ms = (event.end_sample - event.start_sample) / FS * 1000
             print(f"  {i}. {event.start_sample/FS:.3f}s-{event.end_sample/FS:.3f}s, {duration_ms:.1f}ms, "
                   f"freq={event.mean_frequency:.1f}Hz, cycles={event.num_cycles:.1f}")
+    
+    if '6' in plot_choices:
+        print('DEBUG: Starting candidate windows plot...')
+        plot_candidate_windows(differential_signal, valid_events, FS,
+                               title='Candidate ripple windows')
+        print('DEBUG: Candidate windows plot shown.')
 
     if '7' in plot_choices:
         print("\nPlotting combined SWR detection results with zoom...")

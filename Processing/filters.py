@@ -32,6 +32,7 @@ def compute_hilbert_envelope(signal_data: np.ndarray):
 def detect_peaks_with_threshold(envelope: np.ndarray, threshold_factor: float = 5.0,
                                 min_distance_samples: int = 25) -> np.ndarray:
     """Detect peaks above a median-based threshold."""
+    #median_value = np.std(envelope)
     median_value = np.median(envelope)
     threshold = threshold_factor * median_value
     peaks, _ = signal.find_peaks(envelope, height=threshold, distance=min_distance_samples)
@@ -42,6 +43,7 @@ def find_event_boundaries(envelope: np.ndarray, peaks: np.ndarray,
                           threshold_factor: float = 5.0, window_size: int = 100,
                           min_duration: int = 20) -> list[tuple[int, int, int]]:
     """Find onset and offset boundaries for detected ripple peaks."""
+    #median_value = np.std(envelope)
     median_value = np.median(envelope)
     threshold = threshold_factor * median_value
     half_threshold = threshold / 2
