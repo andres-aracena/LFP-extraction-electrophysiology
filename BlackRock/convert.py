@@ -3,7 +3,7 @@ import numpy as np
 from neo.rawio import BlackrockRawIO
 
 # --- Configuración de Archivos ---
-input_file = r"20230522-090311-001.ns6"
+input_file = r"C:\Users\laboratorio\Downloads\20230522-090311-001.ns2"
 output_file = r"continuous_32ch.dat"
 
 # --- Parámetros de Canales ---
